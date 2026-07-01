@@ -85,15 +85,3 @@ The entry point to start the crawler program is `~/async_crawler/crawler_starter
 
 * Extraction of links\
 The implementation is in `~/async_crawler/analyze_html_links.py`. The program requires a list of Hadoop file paths as inputs, which points to the HTML content data files. It will extract all links from HTML contents and label their types (HTTP link, javascript, anchor, and telephone). The link is defined as `href` attribute enveloped in `<a>` tag in HTML.
-
-___
-
-## Contact
-
-If you have questions feel free to contact us:
-
-* Mario Müller (mmueller@de.imshealth.com)
-* Francisco Lima (francisco.lima@iqvia.com)
-* Simon Pickert (pickert@de.imshealth.com)
-* Daozhou Yao (dyao@cn.imshealth.com)
-* Yunqing Hu (yunqing.hu@cn.imshealth.com)
