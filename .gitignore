@@ -1,0 +1,14 @@
+*.pyc
+*.sas7bdat
+*.csv
+*.xlsx
+*.pkl
+*.json
+*.png
+__pycache__
+.*
+!.gitignore
+!.gitkeep
+output/crawled_outputs/
+logs/
+nltk_data/
