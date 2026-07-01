@@ -35,7 +35,7 @@ def log(func):
 
 async def crawl(session: ClientSession, url: Dict[str, str], logger: Logger) -> Dict[str, Union[str, int]]:
     headers = {
-        "User-Agent": 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+        "User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36'
     }
     try:
         async with session.get(url['url'], headers=headers, max_redirects=30) as resp:

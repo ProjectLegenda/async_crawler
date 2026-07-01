@@ -15,7 +15,7 @@ from aiologger.handlers.streams import AsyncStreamHandler
 class AsyncLogger(object):
     def __init__(self, name: str = None, loop: _UnixSelectorEventLoop = None) -> None:
         day_date = datetime.datetime.now().strftime("%Y-%m-%d")
-        log_path = f"/home/cdsw/logs/{day_date}/"
+        log_path = f"logs/{day_date}"
 
         if not os.path.exists(log_path):
             os.makedirs(log_path)

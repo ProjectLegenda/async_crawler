@@ -26,14 +26,21 @@ if __name__ == "__main__":
     name = f"crawled_html_chunk_{file_chunk_num}"
     loop = asyncio.get_event_loop()
     logger = AsyncLogger(name=name, loop=loop).get_logger()
-    df = pd.read_parquet(url_path, engine="pyarrow")
+    df = pd.read_csv(url_path)
     urls = df[['url_id', 'url']].to_dict('index')
     url_list = [urls[key] for key in urls.keys()]
     results = loop.run_until_complete(crawl_all(url_list[(10000 * chunk_num - 10000):(10000 * chunk_num)], 300.0, logger))
+
     cleaned_results = [{'url_id': elem['url_id'], 'status': elem['status'], 'html': clean_data(elem['html']), 'destination_url': elem['destination_url']} for elem in results]
+    cleaned_results2 = [{'url_id': elem['url_id'], 'status': elem['status']} for elem in results]
 #    loop.close()
-    crawled_html = pd.DataFrame(cleaned_results)
-#    crawled_html.to_csv(
-#        f"hdfs:///user/dyao/html_contents_clean/crawled_html_chunk_{file_chunk_num}.csv", header=False, sep=u'\u0001', index=False, encoding="utf-8")
-    crawled_html.to_csv(
-            f"hdfs:///user/dyao/html_contents_w_dest_url/crawled_html_chunk_{file_chunk_num}.csv", header=False, sep=u'\u0001', index=False, encoding="utf-8")
+    crawled_html = pd.DataFrame(cleaned_results2)
+    
+    crawled_html.to_csv('crawed_html.csv',index=False)
+
+    for item in cleaned_results:
+        with open(item['url_id'],'w') as f:
+            print(item['html'],file=f)
+
+
+               
