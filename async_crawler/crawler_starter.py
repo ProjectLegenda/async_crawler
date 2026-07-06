@@ -10,6 +10,7 @@ import os
 from utils import clean_data
 
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser(
         description="input configuration of crawler")
     parser.add_argument("--url_path", type=str,
@@ -39,7 +40,7 @@ if __name__ == "__main__":
     crawled_html.to_csv('crawed_html.csv',index=False)
 
     for item in cleaned_results:
-        with open(item['url_id'],'w') as f:
+        with open( 'dist/' + item['url_id'],'w') as f:
             print(item['html'],file=f)
 
 
